@@ -27,11 +27,13 @@ requirements:
   host:
     - python
     - pip
+    - wheel
+    - setuptools
   run:
     - python
     - botocore {{ botocore_bounds }}
     - jmespath >=0.7.1,<1.0.0
-    - s3transfer >=0.3.0,<0.4.0
+    - s3transfer >=0.4.0,<0.5.0
 
 test:
   imports:
@@ -41,6 +43,10 @@ test:
     - boto3.ec2
     - boto3.resources
     - boto3.s3
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://aws.amazon.com/sdk-for-python
