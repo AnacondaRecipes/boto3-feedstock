@@ -1,5 +1,5 @@
-{% set version = "1.17.109" %}
-{% set hash = "bce638f57fbf054f8eba1abce56c849108646edde3564bd08316763323a4020e" %}
+{% set version = "1.18.16" %}
+{% set hash = "806111acfb70715dfbe9d9f0d6089e7a9661a6d6bb422b17e035fc32e17f3f37" %}
 
 {% set vmajor,vminor,vpatch = version.split('.') %}
 # ALWAYS DOUBLE-CHECK THESE OFFSETS AGAINST UPSTREAM setup.py
@@ -33,7 +33,7 @@ requirements:
     - python
     - botocore {{ botocore_bounds }}
     - jmespath >=0.7.1,<1.0.0
-    - s3transfer >=0.4.0,<0.5.0
+    - s3transfer >=0.5.0,<0.6.0
 
 test:
   imports:
