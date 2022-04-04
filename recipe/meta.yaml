@@ -1,5 +1,5 @@
-{% set version = "1.20.24" %}
-{% set hash = "739705b28e6b2329ea3b481ba801d439c296aaf176f7850729147ba99bbf8a9a" %}
+{% set version = "1.21.32" %}
+{% set hash = "05f4438607e560624caadb073c6c63181eda9bf74f8a9e4581e7b43d641cc683" %}
 
 {% set vmajor,vminor,vpatch = version.split('.') %}
 # ALWAYS DOUBLE-CHECK THESE OFFSETS AGAINST UPSTREAM setup.py
@@ -32,7 +32,7 @@ requirements:
   run:
     - python >=3.6
     - botocore {{ botocore_bounds }}
-    - jmespath >=0.7.1,<1.0.0
+    - jmespath >=0.7.1,<2.0.0
     - s3transfer >=0.5.0,<0.6.0
 
 test:
@@ -45,7 +45,6 @@ test:
     - boto3.s3
   requires:
     - pip
-    - python <3.10
   commands:
     - pip check
 
