@@ -1,5 +1,5 @@
-{% set version = "1.21.32" %}
-{% set hash = "05f4438607e560624caadb073c6c63181eda9bf74f8a9e4581e7b43d641cc683" %}
+{% set version = "1.24.2" %}
+{% set hash = "927b5e8e2decad746e6c32bb81f15c2ea9ab4398286134d21f6742493eb893f6" %}
 
 {% set vmajor,vminor,vpatch = version.split('.') %}
 # ALWAYS DOUBLE-CHECK THESE OFFSETS AGAINST UPSTREAM setup.py
@@ -20,7 +20,7 @@ source:
 
 build:
   number: 0
-  noarch: python
+  skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
@@ -30,10 +30,10 @@ requirements:
     - wheel
     - setuptools
   run:
-    - python >=3.6
+    - python
     - botocore {{ botocore_bounds }}
     - jmespath >=0.7.1,<2.0.0
-    - s3transfer >=0.5.0,<0.6.0
+    - s3transfer >=0.6.0,<0.7.0
 
 test:
   imports:
