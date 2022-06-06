@@ -58,7 +58,7 @@ about:
     Boto3 makes it easy to integrate you Python application, library or script
     with AWS services. It allows Python developers to write softare that makes
     use of services like Amazon S3 and Amazon EC2.
-  doc_url: https://boto3.readthedocs.org
+  doc_url: https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
   doc_source_url: https://github.com/boto/boto3/blob/develop/README.rst
   dev_url: https://github.com/boto/boto3
 
