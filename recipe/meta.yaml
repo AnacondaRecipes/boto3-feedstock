@@ -1,27 +1,18 @@
-{% set version = "1.24.28" %}
-{% set hash = "af12023bb8f3059bb72697bcf9be860c492760c8201ec09246bd0b04cea88573" %}
-
-{% set vmajor,vminor,vpatch = version.split('.') %}
-# ALWAYS DOUBLE-CHECK THESE OFFSETS AGAINST UPSTREAM setup.py
-{% set botocore_major = vmajor | int + 0 %}
-{% set botocore_minor = vminor | int + 3 %}
-{% set botocore_patch = vpatch | int + 0 %}
-{% set botocore_min = botocore_major ~ '.' ~ botocore_minor ~ '.' ~ botocore_patch %}
-{% set botocore_max = botocore_major ~ '.' ~ (botocore_minor + 1) ~ '.0' %}
-{% set botocore_bounds = '>=' ~ botocore_min ~ ',<' ~ botocore_max %}
+{% set name = "boto3" %}
+{% set version = "1.26.76" %}
 
 package:
-  name: boto3
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/b/boto3/boto3-{{ version }}.tar.gz
-  sha256: {{ hash }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 30c7d967ed1c6b5a05643e42cae9d4d36c3f1cb6782637ddc7007a104cfd9027
 
 build:
   number: 0
   skip: true  # [py<37]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
@@ -31,7 +22,7 @@ requirements:
     - setuptools
   run:
     - python
-    - botocore {{ botocore_bounds }}
+    - botocore >=1.29.76,<1.30.0
     - jmespath >=0.7.1,<2.0.0
     - s3transfer >=0.6.0,<0.7.0
 
@@ -59,7 +50,6 @@ about:
     with AWS services. It allows Python developers to write softare that makes
     use of services like Amazon S3 and Amazon EC2.
   doc_url: https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
-  doc_source_url: https://github.com/boto/boto3/blob/develop/README.rst
   dev_url: https://github.com/boto/boto3
 
 extra:
