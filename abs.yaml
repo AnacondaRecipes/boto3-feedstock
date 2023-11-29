@@ -1,4 +1,1 @@
 aggregate_check: false
-
-channels:
-  - https://staging.continuum.io/prefect/fs/botocore-feedstock/pr56/9892801
