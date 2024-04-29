@@ -1,3 +1,3 @@
 channels:
-  - https://staging.continuum.io/prefect/fs/botocore-feedstock/pr58/dab749f
+  - https://staging.continuum.io/prefect/fs/botocore-feedstock/pr57/9b28a3f
   - https://staging.continuum.io/prefect/fs/s3transfer-feedstock/pr7/670e06b
