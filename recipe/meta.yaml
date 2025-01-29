@@ -32,6 +32,13 @@ requirements:
     # Collecting awscrt==0.23.4 (from botocore[crt]<2.0a0,>=1.21.0)
     - awscrt 0.23.4
 
+# Integration tests are required to validate real AWS services like S3 and SQS, which are not available in our environment.
+# Error example:
+#   - botocore.exceptions.NoCredentialsError: Unable to locate credentials
+#   - botocore.exceptions.ClientError: An error occurred (NoSuchBucket) when calling the GetObject operation: The specified bucket does not exist
+# Skipping integration tests:
+{% set ignore_tests = " --ignore=tests/integration/" %}
+
 test:
   source_files:
     - tests
@@ -44,7 +51,7 @@ test:
     - boto3.s3
   commands:
     - pip check
-    - pytest -v tests
+    - pytest -v {{ ignore_tests }} tests
   requires:
     - pip
     - pytest
