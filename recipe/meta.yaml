@@ -25,7 +25,7 @@ requirements:
     - botocore >=1.36.3,<1.37.0
     - jmespath >=0.7.1,<2.0.0
     - s3transfer >=0.11.0,<0.12.0
-  eun_constrained:
+  run_constrained:
     # https://github.com/boto/boto3/blob/1.36.3/setup.cfg#L11C1-L11C35
     # pip install --dry-run "botocore[crt]>=1.21.0,<2.0a0"
     # pip output is:
