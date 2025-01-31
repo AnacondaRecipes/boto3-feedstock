@@ -1,6 +1,2 @@
 build_env_vars:
   ANACONDA_ROCKET_ENABLE_PY313 : yes
-
-channels:
-  - https://staging.continuum.io/prefect/fs/botocore-feedstock/pr60/86979a9 # botocore
-  - https://staging.continuum.io/prefect/fs/s3transfer-feedstock/pr8/3cb7bc8 # s3transfer
