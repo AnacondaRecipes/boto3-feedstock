@@ -1,13 +1,13 @@
 {% set name = "boto3" %}
-{% set version = "1.36.3" %}
+{% set version = "1.37.10" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/boto/boto3/archive/{{ version }}.tar.gz
-  sha256: 717524617c624a8547baca79c5b33b385c2351e0c400029b16a9f2d3df26609d
+  url: https://github.com/boto/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 3e3bc278d671560b9df83ea4ac0fc3c2cf74f09317ff3d09cdfb9c54211e77ef
 
 build:
   number: 0
@@ -22,7 +22,7 @@ requirements:
     - setuptools
   run:
     - python
-    - botocore >=1.36.3,<1.37.0
+    - botocore >=1.37.10,<1.38.0
     - jmespath >=0.7.1,<2.0.0
     - s3transfer >=0.11.0,<0.12.0
   run_constrained:
