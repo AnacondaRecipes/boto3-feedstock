@@ -1,5 +1,6 @@
 {% set name = "boto3" %}
-{% set version = "1.37.10" %}
+{% set version = "1.40.51" %}
+{% set ignore_tests = " --ignore=tests/integration/" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +8,7 @@ package:
 
 source:
   url: https://github.com/boto/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 3e3bc278d671560b9df83ea4ac0fc3c2cf74f09317ff3d09cdfb9c54211e77ef
+  sha256: 7f8f0d64747f2ba2cb83586db54ffb9364e91cf55818a5554dd1a58370cde1b8
 
 build:
   number: 0
@@ -22,23 +23,22 @@ requirements:
     - setuptools
   run:
     - python
-    - botocore >=1.37.10,<1.38.0
+    - botocore >=1.40.51,<1.41.0
     - jmespath >=0.7.1,<2.0.0
-    - s3transfer >=0.11.0,<0.12.0
+    - s3transfer >=0.14.0,<0.15.0
   run_constrained:
     # https://github.com/boto/boto3/blob/1.37.10/setup.cfg#L11C1-L11C35
     # pip install --dry-run "botocore[crt]>=1.21.0,<2.0a0"
     # pip output is:
     # Collecting awscrt==0.23.8 (from botocore[crt]<2.0a0,>=1.21.0)
     - awscrt 0.23.8
+    - botocore >=1.21.0,<2.0a0
 
 # Integration tests are required to validate real AWS services like S3 and SQS, which are not available in our environment.
 # Error example:
 #   - botocore.exceptions.NoCredentialsError: Unable to locate credentials
 #   - botocore.exceptions.ClientError: An error occurred (NoSuchBucket) when calling the GetObject operation: The specified bucket does not exist
 # Skipping integration tests:
-{% set ignore_tests = " --ignore=tests/integration/" %}
-
 test:
   source_files:
     - tests
