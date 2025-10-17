@@ -1,6 +1,5 @@
 {% set name = "boto3" %}
-{% set version = "1.40.51" %}
-{% set ignore_tests = " --ignore=tests/integration/" %}
+{% set version = "1.40.54" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +7,12 @@ package:
 
 source:
   url: https://github.com/boto/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 7f8f0d64747f2ba2cb83586db54ffb9364e91cf55818a5554dd1a58370cde1b8
+  sha256: e7de36378e605d9798297456e7dc452896e3001e72395396ad9e16890adb85e2
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   skip: true  # [py<38]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
@@ -23,7 +22,7 @@ requirements:
     - setuptools
   run:
     - python
-    - botocore >=1.40.51,<1.41.0
+    - botocore >=1.40.54,<1.41.0
     - jmespath >=0.7.1,<2.0.0
     - s3transfer >=0.14.0,<0.15.0
   run_constrained:
@@ -51,13 +50,13 @@ test:
     - boto3.s3
   commands:
     - pip check
-    - pytest -v {{ ignore_tests }} tests
+    - pytest -v tests --ignore=tests/integration/
   requires:
     - pip
     - pytest
 
 about:
-  home: https://aws.amazon.com/sdk-for-python/
+  home: https://aws.amazon.com/sdk-for-python
   license: Apache-2.0
   license_file: LICENSE
   license_family: Apache
