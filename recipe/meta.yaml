@@ -1,13 +1,13 @@
 {% set name = "boto3" %}
-{% set version = "1.37.10" %}
+{% set version = "1.39.8" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/boto/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 3e3bc278d671560b9df83ea4ac0fc3c2cf74f09317ff3d09cdfb9c54211e77ef
+  url: https://github.com/boto/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 7ec7a244bd0e10e91f5621327908789dfbfbc9e9f9f8f6b96ee6b7d2484643c0
 
 build:
   number: 0
@@ -22,9 +22,9 @@ requirements:
     - setuptools
   run:
     - python
-    - botocore >=1.37.10,<1.38.0
+    - botocore >=1.39.8,<1.40.0
     - jmespath >=0.7.1,<2.0.0
-    - s3transfer >=0.11.0,<0.12.0
+    - s3transfer >=0.13.0,<0.14.0
   run_constrained:
     # https://github.com/boto/boto3/blob/1.37.10/setup.cfg#L11C1-L11C35
     # pip install --dry-run "botocore[crt]>=1.21.0,<2.0a0"
@@ -57,7 +57,7 @@ test:
     - pytest
 
 about:
-  home: https://aws.amazon.com/sdk-for-python/
+  home: https://aws.amazon.com/sdk-for-python
   license: Apache-2.0
   license_file: LICENSE
   license_family: Apache
