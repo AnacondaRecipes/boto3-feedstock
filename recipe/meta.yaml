@@ -1,5 +1,5 @@
 {% set name = "boto3" %}
-{% set version = "1.42.19" %}
+{% set version = "1.42.34" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/boto/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: bd15b08a854df1ac397d75f575b9f23479224a1a3f7eaa6802309fb13a0aeee3
+  sha256: 737c9ef85065f4fde7f2fb4c73a0294acaf0eaa4225a7e3faaf1f7b44edc0072
 
 build:
   number: 0
@@ -22,15 +22,15 @@ requirements:
     - setuptools
   run:
     - python
-    - botocore >=1.42.19,<1.43.0
+    - botocore >=1.42.34,<1.43.0
     - jmespath >=0.7.1,<2.0.0
     - s3transfer >=0.16.0,<0.17.0
   run_constrained:
-    # https://github.com/boto/boto3/blob/1.42.19/setup.cfg#L11
-    # pip install --dry-run "botocore[crt]>=1.21.0,<2.0a0"
+    # https://github.com/boto/boto3/blob/1.42.34/setup.cfg#L11
+    # pip install --dry-run "botocore[crt]>=1.42.34,<2.0a0"
     # pip output is:
-    # Collecting awscrt==0.23.8 (from botocore[crt]<2.0a0,>=1.21.0)
-    - awscrt 0.23.8
+    # Collecting awscrt==0.29.2 (from botocore[crt]<2.0a0,>=1.42.34)
+    - awscrt 0.29.2
 
 test:
   source_files:
