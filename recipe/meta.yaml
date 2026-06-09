@@ -1,5 +1,5 @@
 {% set name = "boto3" %}
-{% set version = "1.42.61" %}
+{% set version = "1.43.25" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/boto/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 60ebfcb1a9a8e2641b9087663b62e832e944134fbd6f6dc53bd6efb12780a3d2
+  sha256: 59d32908f80ba798b880d1961fe7fd1506f37b4be0ed84e9db0c668d241d8c6a
 
 build:
   number: 0
