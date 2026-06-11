@@ -1,5 +1,5 @@
 {% set name = "boto3" %}
-{% set version = "1.42.61" %}
+{% set version = "1.43.24" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/boto/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 60ebfcb1a9a8e2641b9087663b62e832e944134fbd6f6dc53bd6efb12780a3d2
+  sha256: 03a702a7606ae89676570c504410deef2b9cefe6d31cf1b051f7de2adb789c68
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  skip: true  # [py<39]
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -22,14 +22,12 @@ requirements:
     - setuptools
   run:
     - python
-    - botocore >=1.42.61,<1.43.0
+    - botocore >=1.43.24,<1.44.0
     - jmespath >=0.7.1,<2.0.0
-    - s3transfer >=0.16.0,<0.17.0
+    - s3transfer >=0.18.0,<0.19.0
   run_constrained:
-    # pip install --dry-run "botocore[crt]>=1.42.61,<2.0a0"
-    # pip output is:
-    # Collecting awscrt==0.31.2 (from botocore[crt]<2.0a0,>=1.42.61)
-    - awscrt 0.31.2
+    # botocore[crt]>=1.21.0,<2.0a0: from botocore 1.43.24 - awscrt 0.32.2
+    - awscrt 0.32.2
 
 test:
   source_files:
@@ -63,7 +61,7 @@ about:
     Boto3 makes it easy to integrate you Python application, library or script
     with AWS services. It allows Python developers to write softare that makes
     use of services like Amazon S3 and Amazon EC2.
-  doc_url: https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
+  doc_url: https://docs.aws.amazon.com/boto3/latest
   dev_url: https://github.com/boto/boto3
 
 extra:
