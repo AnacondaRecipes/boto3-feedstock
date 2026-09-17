@@ -1,5 +1,5 @@
 {% set name = "boto3" %}
-{% set version = "1.43.73" %}
+{% set version = "1.43.68" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/boto/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: ad941f534b07e39b5f09a099d75769dd464a5963d9d14585a9a83d8ce83beb5b
+  sha256: c9f30270cc1465085f9112e07ff05587f64f1b9c1d5cc2481f5b4350111adfeb
 
 build:
   number: 0
@@ -42,8 +42,6 @@ test:
     - boto3.s3
   commands:
     - pip check
-    # Tests require a valid CA bundle with the path to certificates.
-    - export REQUESTS_CA_BUNDLE=/ssl/cacert.pem  # [not win]
     # Integration tests are required to validate real AWS services like S3 and SQS, which are not available in our environment.
     # Error example:
     #   - botocore.exceptions.NoCredentialsError: Unable to locate credentials
@@ -75,3 +73,6 @@ extra:
     - proinsias
     - tkelman
     - ocefpaf
+  skip-lints:
+    # Home url are reachable
+    - reachable_url
