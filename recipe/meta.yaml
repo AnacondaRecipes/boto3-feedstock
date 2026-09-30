@@ -25,8 +25,6 @@ requirements:
     - botocore >=1.43.68,<1.44.0
     - jmespath >=0.7.1,<2.0.0
     - s3transfer >=0.19.0,<0.20.0
-     # botocore uses certifi when importable, instead of vendored cacert.pem
-    - certifi
   run_constrained:
     # botocore[crt]>=1.21.0,<2.0a0: from botocore 1.43.24 - awscrt 0.32.2
     - awscrt 0.32.2
@@ -56,9 +54,7 @@ test:
   requires:
     - pip
     - pytest
-    # Tests require a valid CA bundle with the path to certificates.
-    # ca-certificates contains needed certificates.
-    - ca-certificates
+    - certifi
 
 about:
   home: https://aws.amazon.com/sdk-for-python
